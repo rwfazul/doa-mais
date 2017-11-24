@@ -1,0 +1,152 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 18, 2017, 8:45:47 PM
+    Author     : rhau
+*/
+
+@charset "utf-8";
+
+.navbar {
+    min-height: 80px;
+    background-color: #BF2025;
+    border-radius: 0%;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", sans-serif;
+    margin-bottom: 0;
+}
+
+.navbar .navbar-nav {
+    display: inline-block;
+    float: none;
+}
+
+.navbar .navbar-collapse {
+    text-align: center;
+}
+
+.navbar-nav li a {
+    color: #FFF;
+    margin-top: 10px;
+}
+
+.navbar-nav li a:hover,
+.navbar-nav li a:focus { 
+    color: #333;
+    background: none;
+}
+
+.navbar-nav li.active a {
+    color: #333;
+    background-color: #FFF;
+    border-radius: 5px; 
+    border: none;
+}
+
+.navbar-nav li.active.open a {
+    background-color: #FFF;
+}
+
+.navbar-nav li.dropdown a.dropdown-toggle > .fa-plus,
+.navbar-nav li.dropdown a.dropdown-toggle > .fa-plus:hover,
+.navbar-nav li.dropdown a.dropdown-toggle > .fa-plus:focus {
+    color: #FFF;
+}
+
+.navbar-nav ul.dropdown-menu {
+    background-color: #FFF !important;
+}
+
+.navbar-nav ul.dropdown-menu li a {
+    color: #BF2025;
+}
+
+.navbar-nav ul.dropdown-menu li a:hover,
+.navbar-nav ul.dropdown-menu li a:focus {
+    background-color: #BF2025;
+    color: #FFF;
+    border-radius: 0;
+}
+
+.navbar ul.dropdown-menu li a:first-child {
+    margin-top: 2px;
+}
+
+.navbar-brand {
+    padding-top: 0;
+    padding-right: 0;
+}
+
+.navbar-img {
+    margin-top: 10px;
+    margin-left: 30px;
+    margin-right: 10px;
+}
+
+.nav .fa {
+    font-size: 22px;
+} 
+
+.nav .caret {
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 6px solid;
+}
+
+.nav .open > a,
+.nav .open > a:focus,
+.nav .open > a:hover {
+    background: none;
+    color: #333;
+}
+
+@media (max-width:910px) and (min-width: 768px) {
+    .navbar-brand .navbar-img {
+        margin-left: 0;
+    }
+    
+    .navbar .navbar-collapse {
+        padding-right: 0;
+    }
+    
+    
+    .navbar .navbar-right {
+        float: none !important;
+    }
+    
+    .navbar .navbar-right li a {
+        margin-top: 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .navbar .navbar-nav {
+        display: block;
+    }
+
+    .navbar-toggle {
+        margin-top: 30px;
+        padding: 10px 20px;
+        background-color: #FFF;
+    }
+
+    .navbar-toggle .icon-bar {
+        background-color: #BF2025;
+    }
+    
+    .navbar-nav > li > .dropdown-menu {
+        border-radius: 4px;
+    }
+    
+    .navbar-nav li a:hover {
+        background-color: #C42127;
+    }
+    
+    .navbar-nav li.active a:hover {
+        background-color: #FFF;
+    }
+}

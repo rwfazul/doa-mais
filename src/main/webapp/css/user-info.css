@@ -1,0 +1,113 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 17, 2017, 12:53:22 PM
+    Author     : rhau
+*/
+
+@charset "utf-8";
+
+.row.content {
+    display: flex;   
+}
+
+.sidenav {
+    min-height: 539px; 
+    background-color: #F1F1F1;
+}
+
+.sidenav ul.nav {
+    margin-top: 50px;
+}
+
+.sidenav ul.nav li a {
+    color: #555;
+    font-size: 17px;
+    padding-top: 10px;
+}
+
+.sidenav ul.nav li a:hover,
+.sidenav ul.nav li a:focus {
+    background-color: #FFF;
+    color: #333;
+    font-weight: bold;
+    border-radius: 4px;
+}
+
+.sidenav ul.nav li.active a {
+    background-color: #BF2025;
+    color: #FFF;
+    border-radius: 4px;
+    font-weight: normal;
+}
+
+.tab-content h4 {
+    margin-top: 30px;
+    text-transform: uppercase;
+}
+
+.bloco-info {
+    border-bottom: 1px solid #E6E8EB;
+    padding-top: 40px;
+    font-size: 16px;
+    justify-content: space-between;
+    color: #1B2733;
+    line-height: 1.5em;
+    display: flex;
+    align-items: center;
+}
+
+.bloco-info:first-of-type {
+    padding-top: 20px;
+}
+
+.bloco-info .bloco-label {
+    flex-grow: 1;
+}
+
+.bloco-info .bloco-valor {
+    margin-right: 16px;
+}
+
+.bloco-info .btn-link {
+    text-decoration: none;
+}
+
+.bloco-info .btn-link:hover,
+.bloco-info .btn-link:focus {
+    color: #4C91CD;
+    text-decoration: none;
+}
+
+.bloco-info .btn-default {
+    color: #23527C;
+    margin-bottom: 4px;
+}   
+    
+@media screen and (max-width: 767px) {
+    .sidenav {
+        min-height: initial;
+        padding: 10px;
+    }
+
+    .row.content {
+        display: block;
+        height: auto;
+    } 
+
+    .sidenav ul.nav {
+        margin-top: 5px;
+    }      
+    
+    .tab-content {
+        margin-bottom: 25px;
+    }
+    
+    .tab-content h4 {
+        margin-top: 40px;
+        text-align: center;
+    }
+}

@@ -1,0 +1,92 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 27, 2017, 12:13:44 AM
+    Author     : rhau
+*/
+
+@charset "utf-8";
+
+main h1 {
+    font-family: Roboto;
+    margin-top: 35px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+main hr {
+    border-top: 2px solid #BF2025;
+    width: 75%;
+}
+
+.novo {
+    padding: 15px;
+    background-color: #FFF;
+    border-color: #E3E3E3;
+    color: #BF2025;
+}
+
+.novo:hover, 
+.novo:focus {
+    background-color: #EEE;
+    color: #333;
+}
+
+.novo .fa {
+    font-size: 25px;
+    margin-bottom: 8px;
+}
+
+.novo  {
+    font-size: 19px;
+    text-transform: uppercase;
+    font-family: Roboto;
+    margin-left: 0;
+    font-weight: bold;
+}
+
+#novo-agend .form-agendamento {
+    margin: 0 auto;
+}
+
+#novo-agend .form-agendamento h1 {
+    margin-top: 8px;
+}
+
+#novo-agend .form-agendamento hr {
+    margin-top: 0;
+    margin-bottom: 25px;
+}
+
+.blood-stats {
+    position: relative;
+    z-index: 1;
+    width: 160px;
+    height: 180px;
+    margin: 20px auto;
+    border: 2px dashed rgb(50,50,50);  
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 80px;
+}
+
+.blood-stats:before {
+    position: absolute;
+    z-index: -1;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #E92F2F;    
+}
+
+h4 > .icone-stats {
+    color: #BF2025;
+}
+
+button.novo {
+    margin-top: 50px;
+}

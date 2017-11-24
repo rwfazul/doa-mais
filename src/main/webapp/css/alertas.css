@@ -1,0 +1,75 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Nov 23, 2017, 1:13:15 AM
+    Author     : rhau
+*/
+
+@charset "utf-8";
+
+main hr {
+    border-top: 2px solid #BF2025;
+    width: 75%;
+}
+
+main h1 {
+    font-family: Roboto;
+    margin-top: 35px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+#alertas-secao {
+    text-align: left;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+#alertas-secao .bloco-alerta {
+    border-radius: 5px;
+    border: 1px solid #E3E3E3;
+    margin: 5px; 
+    padding: 15px 15px;
+}         
+
+#alertas-secao .bloco-alerta .icone {
+    float: left;
+    margin-right: 25px;
+    margin-top: 10px;
+    color: #BF2025;
+}
+
+#alertas-secao .btn-help {
+    border: 1px dashed #BF2025;
+    color: #BF2025; 
+}
+
+
+#alertas-secao .btn-help:hover,
+#alertas-secao .btn-help:focus {
+    background-color: #BF2025; 
+    color: #FFF;
+    border: 1px dashed #FFF;
+}
+
+#alertas-secao .bloco-alerta .icone:hover,
+#alertas-secao .bloco-alerta .icone:focus {
+    opacity: .8;
+}
+
+#alertas-secao .bloco-alerta h2 { 
+    font-size: 21px;
+    text-align: center;
+    color: #BF2025;
+    font-family: Roboto;
+}
+
+.hemocentro-info  p {
+    color: #333;
+    text-align: left;
+    font-size: 17px;
+    margin: 0;
+}

@@ -1,0 +1,78 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 25, 2017, 12:27:17 AM
+    Author     : rhau
+*/
+
+@charset "utf-8";
+
+main h1 {
+    font-family: Roboto;
+    margin-top: 35px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+main hr {
+    border-top: 2px solid #BF2025;
+    width: 75%;
+}
+
+.form-agendamento {
+    margin: 35px auto;
+    width: 90%;
+}
+
+.form-agendamento h1 {
+    margin-top: 15px;
+    font-size: 30px;
+}
+
+.form-agendamento label sup {
+    color: #BF2025;
+}
+
+.form-agendamento .select2-container .select2-selection--single {
+    height: 34px;
+    padding: 2px 0;
+}
+
+.form-agendamento .select2.select2-container.select2-container--default {
+    width: 100% !important;
+}
+
+.form-agendamento .select2-container--default .select2-selection--single .select2-selection__arrow {
+    top: 4px;
+}
+
+.form-agendamento .ui-datepicker {
+    width: 24em;
+}
+
+.form-agendamento select#horario option {
+    color: #555;
+}
+
+.form-agendamento .btn-submit {
+    padding: 8px 18px;
+    font-size: 17px;
+    background-color: #BF2025;
+    color: #FFF;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.form-agendamento .btn-submit .fa {
+    margin-left: 4px;
+}
+
+@media only screen and (max-width : 767px) {
+    .form-agendamento .btn-submit {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}

@@ -1,0 +1,159 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 16, 2017, 12:21:24 AM
+    Author     : rhau
+*/
+
+@charset "utf-8";
+
+.navbar {
+    min-height: 90px;
+    border-radius: 0%;
+}
+
+.navbar-brand {
+    padding-top: 0;
+    padding-right: 0;
+}
+
+.navbar-img {
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.navbar-toggle {
+    margin-top: 30px;
+    padding: 10px 20px;
+}
+
+.navbar-form {
+    margin-top: 20px;
+}
+
+.navbar-btn {
+    background-color: #BF2025;
+    color: #FFF;
+    margin-left: 5px;
+}
+
+.input-group-addon {
+    background-color: #FFF;
+}
+
+.glyphicon {
+    color: #BF2025;
+}
+
+.fundo {
+    background: url(../img/background-home.png), #BF2025;
+    background-position: left;
+}
+
+.overlay {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+}
+
+.form-login {
+    background: #F8F8F8;
+    box-shadow: 0 1px 3px rgba(0,0,0,.13);
+    border: 1px solid #E1E1E1;
+    border-radius: 3%;
+    box-sizing: border-box;
+    padding: 5px 15px 30px;
+    margin: 20% auto 30px auto;
+}
+
+.form-login .form-titulo {
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-login .form-group label {
+    color: #72777C;
+    font-weight: normal;
+}
+
+.form-login input {
+    background-color: #FFF;
+}
+
+.form-login .btn-submit {
+    width: 90%;
+    display: block;
+    margin: 25px auto 0 auto;
+    background-color: #BF2025;
+    color: #FFF;
+}       
+
+.form-login .btn-submit:hover,
+.form-login .btn-submit:focus {
+    color: #333;
+}
+
+.titulo {
+    color: #FFF;
+    font-size: 72px;
+    font-family: Roboto, -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", sans-serif;
+    font-weight: 300;
+    margin-top: 30px;
+}
+
+.descricao {
+    color: rgba(255,255,255,0.7);
+    font-size: 26px;
+    text-align: center;
+    margin-top: 25px;
+}
+
+.descricao-destaque {
+    color: white;
+    font-weight: 400;
+}
+
+.btn-hemocentro {
+    background-color: #FFF;
+    border-radius: 6px;
+    color: #BF2025;
+    padding: 8px 12px;
+    font-size: 17px;
+    margin-top: 15px;
+}
+
+.btn-hemocentro .fa {
+    margin-left: 5px;
+}
+
+@media only screen and (max-width : 767px) {
+    .collapsing, .in {
+        background: #F8F8F8;    
+    }
+    
+    .navbar-form {
+        border: none;   
+    }
+    
+    .navbar-btn {
+        width: 60%;
+        display: block;
+        margin: 20px auto 0 auto;
+    }
+    
+    .input-group, .input-group input {
+        height: 40px;
+        width: 90%;
+        margin: 0 auto 10px auto;
+    }
+    
+    .form-login {
+        margin: 30px auto;
+    }
+    
+    .descricao {
+        font-size: 22px;
+    }
+}

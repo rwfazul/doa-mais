@@ -1,0 +1,97 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Sep 24, 2017, 8:59:14 PM
+    Author     : rhau
+*/
+
+@charset "utf-8";
+
+main h1 {
+    font-family: Roboto;
+    margin-top: 35px;
+    color: #333;
+    text-transform: uppercase;
+}
+
+main hr {
+    border-top: 2px solid #BF2025;
+    width: 75%;
+}
+
+#hemocentros-secao {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+#hemocentros-secao .item-superior {
+    display: inline-block;
+    border-radius: 5px;
+    border: 1px solid #E3E3E3;
+    margin: 5px; 
+    padding: 0 10px;
+    width: 370px;
+    height: 185px;
+    white-space: nowrap;
+    overflow-x: auto;
+}         
+
+#hemocentros-secao .item-superior .icone {
+    float: left;
+    margin-right: 25px;
+    margin-top: 15px;
+    color: #BF2025;
+}
+
+#hemocentros-secao .item-superior .icone:hover,
+#hemocentros-secao .item-superior .icone:focus {
+    opacity: .8;
+}
+
+#hemocentros-secao .item-superior h2 { 
+    font-size: 21px;
+    text-align: center;
+    color: #BF2025;
+    font-family: Roboto;
+}
+
+/* .hemocentro-info {
+    overflow: hidden;
+} */
+
+.hemocentro-info  p {
+    color: #333;
+    text-align: left;
+    font-size: 17px;
+    margin: 0;
+}
+
+.hemocentro-info .hemocentro-social {
+    margin: 8px 7px;
+    text-align: right;
+}
+
+.hemocentro-info .hemocentro-social a {
+    margin: 3px;
+}
+
+.hemocentro-info .hemocentro-social .fa { 
+    font-size: 25px; 
+    color: #333;
+}
+
+.hemocentro-info .hemocentro-social .fa:hover,
+.hemocentro-info .hemocentro-social .fa:focus {
+    color: #BF2025;
+}
+
+@media (max-width: 767px) {
+    #hemocentros-secao .item-superior  {              
+        height: auto;
+        white-space: normal;
+        overflow: visible;
+    }
+}
