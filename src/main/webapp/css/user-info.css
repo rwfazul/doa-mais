@@ -87,6 +87,23 @@ and open the template in the editor.
     margin-bottom: 4px;
 }   
     
+.bloco-info .btn-danger {
+    margin-bottom: 4px;
+    background-color: #BF2025;
+}
+
+#confirmacao .modal-dialog.modal-sm {
+    padding-top: 15%;
+}
+
+#confirmacao .modal-footer {
+    text-align: center;
+}
+
+#confirmacao .btn {
+    width: 100px;
+}
+
 @media screen and (max-width: 767px) {
     .sidenav {
         min-height: initial;

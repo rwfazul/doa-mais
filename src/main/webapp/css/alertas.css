@@ -31,7 +31,7 @@ main h1 {
 #alertas-secao .bloco-alerta {
     border-radius: 5px;
     border: 1px solid #E3E3E3;
-    margin: 5px; 
+    margin: 0 auto 20px auto; 
     padding: 15px 15px;
 }         
 
@@ -46,7 +46,6 @@ main h1 {
     border: 1px dashed #BF2025;
     color: #BF2025; 
 }
-
 
 #alertas-secao .btn-help:hover,
 #alertas-secao .btn-help:focus {
@@ -72,4 +71,36 @@ main h1 {
     text-align: left;
     font-size: 17px;
     margin: 0;
+}
+
+.modal .modal-dialog.modal-sm {
+    padding-top: 15%;
+}
+
+#situacao p {
+    margin: 3px;
+    font-size: 17px;
+}
+
+@media (max-width: 590px) {
+    #alertas-secao .bloco-alerta {
+        text-align: center;
+    }         
+
+    #alertas-secao .bloco-alerta .icone {
+        float: none;
+        display: block;
+        margin-bottom: 15px;
+    }
+    
+    #alertas-secao .hemocentro-info p {
+        text-align: center;
+    }
+    
+    #alertas-secao .hemocentro-info .btn-help {
+        float: none !important;
+        display: block;
+        width: 100px;
+        margin: 10px auto;
+    }
 }
