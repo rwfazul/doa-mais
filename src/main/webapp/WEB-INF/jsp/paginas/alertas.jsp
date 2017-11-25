@@ -11,6 +11,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t" %>
 
 <!DOCTYPE html>
@@ -71,19 +72,42 @@
     <div class="col-md-8 col-md-offset-2">
         <h4 class="text-center">Veja os hemocentros que precisam do seu tipo sanguíneo com urgência!</h4>
         <div id="alertas-secao">
-            <div class ="bloco-alerta">
-                <span class="icone">
-                    <i class="fa fa-heartbeat fa-4x"></i>
-                </span>
-                <div class="hemocentro-info clearfix">
-                    <p>Hemocentro: ${a.hemocentro.nome}</p>
-                    <p>Fone: ${a.hemocentro.fone} <a class="btn btn-help pull-right">Ajudar</a></p>
-                    <p>Alerta emitido em: ${a.data}</p>
-                </div> 
-            </div>                
+            <c:forEach var="a" items="${alertasAtivosUser}">
+                <div class ="bloco-alerta">
+                    <span class="icone">
+                        <i class="fa fa-heartbeat fa-4x"></i>
+                    </span>
+                    <div class="hemocentro-info clearfix">
+                        <p>${a.hemocentro.nome}</p>
+                        <p>Fone: ${a.hemocentro.telefone} 
+                            <a class="modal-info btn btn-help pull-right" data-toggle="modal" data-target="#situacao" data-tipo="${a.tipoSanguineo}" data-obj="${a.objetivo}" data-inf="${a.informacoes}">Situação</a>
+                        </p>
+                        <p>Alerta emitido em: <fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}" /></p>
+                    </div> 
+                </div>                
+            </c:forEach>
         </div>
     </div>
     </div><hr/>
+    </div>
+                
+    <div class="modal fade" id="situacao" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title text-center">Informações</h4>
+                </div>
+                <div class="modal-body">
+                    <p id="modal-tipo"></p>
+                    <p id="modal-obj"></p>
+                    <p id="modal-info"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check" aria-hidden="true"></i> Fechar</button>
+                </div>
+            </div>
+        </div>
     </div>
                 
 </main>
@@ -115,7 +139,23 @@
             });
         });
     </script>
+    <script>
+        $(function() {
+            $("#alertas-secao").on("click", ".modal-info", function() {
+                var tipoSanguineo = $( this ).data("tipo");
+                var objetivo = $( this ).data("obj");
+                var informacoes = $( this ).data("inf");
+                if (informacoes === '') informacoes = 'N/A';
+                var $modal = $("#situacao");
+                console.log($modal);
+                $modal.find("#modal-tipo").html("Tipo sanguíneo: <span style='color: #BF2025'>" + tipoSanguineo + "</span>");
+                $modal.find("#modal-obj").html("Objetivo de doações: <span style='color: #007FFF'>" + objetivo + "</span>");
+                $modal.find("#modal-info").text("Considerações extras: " + informacoes);
+            });
+        });
 
+    </script>
+    
 </body>
 </html>
 

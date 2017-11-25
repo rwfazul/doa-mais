@@ -63,11 +63,11 @@
                         <div class="hemocentro-info">
                             <p>Endereço: ${h.endereco}</p>
                             <p>CEP: ${h.cep}</p>                          
-                            <p>Fone: </p>
+                            <p>Fone: ${h.telefone}</p>
                             <div class="hemocentro-social">
-                                <a href=""><i class="fa fa-envelope"></i></a>
-                                <a href=""><i class="fa fa-home"></i></a>
-                                <a href=""><i class="fa fa-facebook"></i></a>
+                                <a href="${h.email}"><i class="fa fa-envelope"></i></a>
+                                <a href="${h.facebook}"><i class="fa fa-home"></i></a>
+                                <a href="${h.site}"><i class="fa fa-facebook"></i></a>
                             </div>
                         </div> 
                     </div>

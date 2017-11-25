@@ -106,7 +106,6 @@
                $('[href="#${newTabActive}"]').click();
             });
         </script>
-    </c:if>
-    
+    </c:if> 
 </body>
 </html>

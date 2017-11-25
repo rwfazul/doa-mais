@@ -62,7 +62,7 @@
                         <c:remove var="msg"/> 
                     </c:if>
                     <c:forEach var="e" items="${eventosAgendados}">                             
-                        <div class="list-group-item list-group-item-success">
+                        <a class="list-group-item list-group-item-success modal-delete" data-toggle="modal" data-target="#confirmacao" data-id="${e.id}">
                             <h4 class="list-group-item-heading">
                                 <i class="fa fa-calendar" aria-hidden="true"></i> 
                                 ${e.nome} <span class="badge" title="Agendamentos no evento">${e.qtdAgendamentos}</span>
@@ -75,7 +75,7 @@
                                 <li><strong>Onde? </strong> ${e.local}</li>
                                 <li><strong>Quando? </strong> <fmt:formatDate pattern="dd/MM/yyyy" value="${e.data}" />, ${e.horario}</li>
                             </ul>
-                        </div>
+                        </a>
                     </c:forEach>
                     <c:forEach var="e" items="${eventosFuturos}">                             
                         <a class="list-group-item modal-new" data-toggle="modal" data-target="#agendamento" data-id="${e.id}">
@@ -153,6 +153,27 @@
             </div>
         </div>
     </div>  
+    
+    <div class="modal fade" id="confirmacao" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title text-center">Confirmar exclusão</h4>
+                </div>
+                <div class="modal-body text-center">
+                    <p>Você tem certeza que deseja cancelar o agendamento no evento?</p>
+                </div>
+                <div class="modal-footer">
+                    <form action="deletarAgendamentoEvento" method="get">
+                        <input type="hidden" id="id_agendamento_delete" name="id_evento" />     
+                        <button type="submit" class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i> Deletar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-check" aria-hidden="true"></i> Manter</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div> 
 
 </main>
 
@@ -169,6 +190,11 @@
             $("#futuros").on("click", ".modal-new", function() {
                 var id_evento = $( this ).data("id");
                 $("#agendamento input[name='id_evento']").val(id_evento);
+            });
+            
+            $("#futuros").on("click", ".modal-delete", function() {
+                var id_evento = $( this ).data("id");
+                $("#confirmacao input[name='id_evento']").val(id_evento);
             });
         });
     </script>
