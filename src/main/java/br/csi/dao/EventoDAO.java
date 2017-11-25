@@ -23,8 +23,8 @@ import org.springframework.stereotype.Repository;
 public class EventoDAO extends Registros<Evento> {
     
     public EventoDAO() {
-        setSqlInsercao("INSERT INTO evento (id_hemocentro, nome_evento, descricao_evento, data_evento, horario_evento, local_evento, cep_local_evento, qtd_agendamentos) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        setSqlAlteracao("UPDATE evento SET id_hemocentro = ?, nome_evento = ?, descricao_evento = ?, data_evento = ?, horario_evento = ?, local_evento = ?, cep_local_evento = ?, qtd_agendamentos = ? WHERE id_evento = ?");
+        setSqlInsercao("INSERT INTO evento (id_hemocentro, nome_evento, descricao_evento, data_evento, horario_evento, local_evento, cep_local_evento) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        setSqlAlteracao("UPDATE evento SET id_hemocentro = ?, nome_evento = ?, descricao_evento = ?, data_evento = ?, horario_evento = ?, local_evento = ?, cep_local_evento = ? WHERE id_evento = ?");
         setSqlExclusao("DELETE FROM evento WHERE id_evento = ?");
         setSqlBuscaChavePrimaria("SELECT * FROM evento WHERE id_evento = ?");
         setSqlBuscaPersonalizada("SELECT * FROM evento WHERE id_hemocentro = ?");
@@ -40,7 +40,6 @@ public class EventoDAO extends Registros<Evento> {
         ps.setString(5, e.getHorario());
         ps.setString(6, e.getLocal());
         ps.setString(7, e.getCep());
-        ps.setInt(8, e.getQtdAgendamentos());
     }
 
     @Override
@@ -52,8 +51,7 @@ public class EventoDAO extends Registros<Evento> {
         ps.setString(5, e.getHorario());
         ps.setString(6, e.getLocal());
         ps.setString(7, e.getCep());
-        ps.setInt(8, e.getQtdAgendamentos());
-        ps.setInt(9, e.getId());
+        ps.setInt(8, e.getId());
     }
 
     @Override

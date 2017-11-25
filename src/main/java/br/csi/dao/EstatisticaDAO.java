@@ -23,7 +23,8 @@ import org.springframework.stereotype.Repository;
 public class EstatisticaDAO extends Registros<Estatistica> {
     
     public EstatisticaDAO() {
-        setSqlBuscaTodos("SELECT tipo_sanguineo, COUNT(*) AS qtd FROM doador NATURAL JOIN agendamento GROUP BY tipo_sanguineo;");
+        setSqlBuscaChavePrimaria("SELECT tipo_sanguineo, COUNT(*) AS qtd FROM doador NATURAL JOIN agendamento GROUP BY tipo_sanguineo WHERE id_hemocentro = ?");
+        setSqlBuscaTodos("SELECT tipo_sanguineo, COUNT(*) AS qtd FROM doador NATURAL JOIN agendamento GROUP BY tipo_sanguineo");
     }
 
     @Override

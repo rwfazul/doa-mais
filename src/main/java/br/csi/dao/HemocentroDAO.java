@@ -23,8 +23,8 @@ import org.springframework.stereotype.Repository;
 public class HemocentroDAO extends Registros<Hemocentro> {
 
     public HemocentroDAO() {
-        setSqlInsercao("INSERT INTO hemocentro (nome_hemocentro, endereco, cep_hemocentro) VALUES (?, ?, ?)");
-        setSqlAlteracao("UPDATE hemocentro SET nome_hemocentro = ?, endereco = ?, cep_hemocentro = ? WHERE id_hemocentro = ?");
+        setSqlInsercao("INSERT INTO hemocentro (nome_hemocentro, endereco_hemocentro, cep_hemocentro, telefone_hemocentro, email_hemocentro, link_facebook, link_site) VALUES (?, ?, ?, ?, ?, ?, ?)");
+        setSqlAlteracao("UPDATE hemocentro SET nome_hemocentro = ?, endereco_hemocentro = ?, cep_hemocentro = ?, telefone_hemocentro = ?, email_hemocentro = ?, link_facebook = ?, link_site = ? WHERE id_hemocentro = ?");
         setSqlExclusao("DELETE FROM hemocentro WHERE id_hemocentro = ?");
         setSqlBuscaChavePrimaria("SELECT * FROM hemocentro WHERE id_hemocentro = ?");
         setSqlBuscaPersonalizada("SELECT * FROM hemocentro WHERE nome_hemocentro = ?");
@@ -35,15 +35,23 @@ public class HemocentroDAO extends Registros<Hemocentro> {
     protected void preencherInsercao(PreparedStatement ps, Hemocentro h) throws SQLException {
         ps.setString(1, h.getNome());
         ps.setString(2, h.getEndereco());
-        ps.setInt(3, h.getCep());
+        ps.setString(3, h.getCep());
+        ps.setString(4, h.getTelefone());
+        ps.setString(5, h.getEmail());
+        ps.setString(6, h.getFacebook());
+        ps.setString(7, h.getSite());        
     }
 
     @Override
     protected void preencherAlteracao(PreparedStatement ps, Hemocentro h) throws SQLException {
         ps.setString(1, h.getNome());
         ps.setString(2, h.getEndereco());
-        ps.setInt(3, h.getCep());
-        ps.setInt(4, h.getId());
+        ps.setString(3, h.getCep());
+        ps.setString(4, h.getTelefone());
+        ps.setString(5, h.getEmail());
+        ps.setString(6, h.getFacebook());
+        ps.setString(7, h.getSite());   
+        ps.setInt(8, h.getId());
     }
 
     @Override
@@ -61,8 +69,12 @@ public class HemocentroDAO extends Registros<Hemocentro> {
         Hemocentro h = new Hemocentro();
         h.setId(rs.getInt("id_hemocentro"));
         h.setNome(rs.getString("nome_hemocentro"));
-        h.setEndereco(rs.getString("endereco"));
-        h.setCep(rs.getInt("cep_hemocentro"));
+        h.setEndereco(rs.getString("endereco_hemocentro"));
+        h.setCep(rs.getString("cep_hemocentro"));
+        h.setTelefone(rs.getString("telefone_hemocentro"));
+        h.setEmail(rs.getString("email_hemocentro"));
+        h.setFacebook(rs.getString("link_facebook"));
+        h.setSite(rs.getString("link_site"));
         return h;
     }
 
