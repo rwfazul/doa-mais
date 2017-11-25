@@ -25,9 +25,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class UsuarioController {
     
-    private final Integer tamanhoMinimoSenha = 6;
     @Autowired
     UsuarioDAO udao;
+    
+    private final Integer tamanhoMinimoSenha = 6;
     
     @RequestMapping("logarUsuario")
     public String autenticarLogin(Model model, Usuario u, HttpSession session) {
@@ -90,6 +91,23 @@ public class UsuarioController {
             model.addAttribute("msg", "{ 'id':'email', 'alerta':'Email já cadastrado.' }");
         }
         return "user-info";
+    }
+    
+    @RequestMapping("deletarUsuario")
+    public String deletarUsuario(Model model, @RequestParam("confirmacao-senha") String confirmacaoSenha, HttpSession session) {
+        Usuario userLogado = (Usuario) session.getAttribute("usuarioLogado");
+        if ( !userLogado.getSenha().equals(confirmacaoSenha) ) {
+            model.addAttribute("msgErrorDelete", "Erro: Senha inválida.");
+            return "user-info";
+        }
+        try {
+            udao.excluir(userLogado);
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioController.class.getName()).log(Level.SEVERE, null, ex);
+            model.addAttribute("msgErrorDelete", "Erro: Não foi possível deletar a conta.");
+            return "user-info";
+        }
+        return "redirect:sign-out";
     }
     
     private Boolean validaInfoUsuario(Usuario u, Model model, String confirmacaoSenha) {

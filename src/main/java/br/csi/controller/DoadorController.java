@@ -8,6 +8,7 @@ package br.csi.controller;
 import br.csi.dao.DoadorDAO;
 import br.csi.dao.UsuarioDAO;
 import br.csi.model.Doador;
+import br.csi.model.Usuario;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -31,9 +32,25 @@ public class DoadorController {
 
     @Autowired
     UsuarioDAO udao;
-        
     @Autowired
     DoadorDAO ddao;
+    
+    @RequestMapping("meu-perfil")
+    public String meu_perfil(HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
+        Usuario u = (Usuario) session.getAttribute("usuarioLogado");
+        try {
+            session.setAttribute("doadorInfo", ddao.buscarChavePrimaria(u.getId()));
+        } catch (SQLException ex) {
+            Logger.getLogger(DoadorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "user-info";
+    }
+    
+    @RequestMapping("cadastro-perfil")
+    public String cadastro_perfil() {
+        return "cadastro-perfil";
+    }
         
     @RequestMapping("cadastrarPerfil")
     public String cadastrarPerfil(Model model, Doador d, HttpServletRequest request, HttpSession session) {
@@ -43,6 +60,11 @@ public class DoadorController {
         return "redirect:cadastro-doador";
     }
 
+    @RequestMapping("cadastro-doador")
+    public String cadastro_doador() {
+        return "cadastro-doador";
+    }
+    
     @RequestMapping("cadastrarDoador")
     public String cadastrarDoador(Model model, Doador d, HttpSession session) {  
         if (session.getAttribute("doador") == null)
