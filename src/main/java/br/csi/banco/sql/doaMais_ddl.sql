@@ -6,6 +6,7 @@ DROP TABLE IF EXISTS evento;
 DROP TABLE IF EXISTS alerta;
 DROP TABLE IF EXISTS hemocentro;
 DROP TABLE IF EXISTS doador;
+DROP TABLE IF EXISTS admin_sistema;
 DROP TABLE IF EXISTS usuario;
 
 CREATE TABLE IF NOT EXISTS usuario (
@@ -13,6 +14,13 @@ CREATE TABLE IF NOT EXISTS usuario (
 	email			VARCHAR(50) 	UNIQUE NOT NULL,
 	senha			VARCHAR(50) 	NOT NULL,
 	PRIMARY KEY 		(id_usuario)
+);
+
+CREATE TABLE IF NOT EXISTS admin_sistema (
+	id_admin		INTEGER,
+	login_admin		VARCHAR(50) NOT NULL,
+	PRIMARY KEY		(id_admin),
+	FOREIGN KEY		(id_admin) REFERENCES usuario (id_usuario) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS doador (
