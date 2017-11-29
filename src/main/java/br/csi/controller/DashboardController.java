@@ -1,13 +1,15 @@
-/*
+    /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package br.csi.controller;
 
+import br.csi.dao.DoadorDAO;
 import br.csi.dao.EstatisticaDAO;
 import br.csi.dao.HemocentroDAO;
 import br.csi.model.Estatistica;
+import br.csi.model.Usuario;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -28,6 +30,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class DashboardController {
     
     @Autowired
+    DoadorDAO ddao;
+    @Autowired
     HemocentroDAO hdao; 
     @Autowired
     EstatisticaDAO sdao;
@@ -35,8 +39,13 @@ public class DashboardController {
     @RequestMapping("minha-conta")
     public String dashboard(Model model, HttpSession session) {
         if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
         try {
-            model.addAttribute("estatisticas", calculaEstatisticaDoacoes(sdao.buscarTodos()));
+            if ( ddao.buscarChavePrimaria(usuarioLogado.getId()) == null ) {
+                session.setAttribute("id_usuario", usuarioLogado.getId());
+                return "forward:cadastro-perfil";
+            }
+            model.addAttribute("estatisticas", calcularEstatisticaDoacoes(sdao.buscarTodos()));
             session.setAttribute("hemocentros", hdao.buscarTodos());
         } catch (SQLException ex) {
             Logger.getLogger(DashboardController.class.getName()).log(Level.SEVERE, null, ex);
@@ -44,7 +53,7 @@ public class DashboardController {
         return "dashboard";
     }   
     
-    private Collection<Estatistica> calculaEstatisticaDoacoes(Collection<Estatistica> buscarTodos) {
+    private Collection<Estatistica> calcularEstatisticaDoacoes(Collection<Estatistica> buscarTodos) {
         Collection<Estatistica> estatisticas = new ArrayList<>();
         String tipos[] = { "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-" };
         Integer qtd_doacoes_total = 0;

@@ -78,7 +78,8 @@ public class EventoController {
     }
     
     @RequestMapping("novoAgendamentoEvento")
-    public String insereAgendamento(@RequestParam("id_evento") Integer id_evento, Model model, HttpSession session) {
+    public String inserirAgendamentoEvento(@RequestParam("id_evento") Integer id_evento, Model model, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
         Usuario u = (Usuario) session.getAttribute("usuarioLogado");
         try {
             Evento evento = edao.buscarChavePrimaria(id_evento);
@@ -88,7 +89,7 @@ public class EventoController {
             a.setFaixaHorario(evento.getHorario());
             a.setHemocentro(evento.getHemocentro());
             a.setEvento(evento);
-            a.setObservacoes("Participando do evento \"" + evento.getNome() + "\".");
+            a.setObservacoes("Participando do evento \"" + evento.getNome() + "\"");
             adao.inserir(a);
         } catch (SQLException ex) {
             Logger.getLogger(EventoController.class.getName()).log(Level.SEVERE, null, ex);
@@ -99,7 +100,8 @@ public class EventoController {
     }
     
     @RequestMapping("deletarAgendamentoEvento")
-    public String deletaAgendamento(@RequestParam("id_evento") Integer id_evento, Model model, HttpSession session) {
+    public String deletarAgendamentoEvento(@RequestParam("id_evento") Integer id_evento, Model model, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
         Usuario u = (Usuario) session.getAttribute("usuarioLogado");
         try {
             Agendamento a = new Agendamento();

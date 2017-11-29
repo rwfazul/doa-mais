@@ -54,7 +54,7 @@ public class DoadorController {
         
     @RequestMapping("cadastrarPerfil")
     public String cadastrarPerfil(Model model, Doador d, HttpServletRequest request, HttpSession session) {
-        if (! validaDataNascimento(model, d, request) )
+        if (! validarDataNascimento(model, d, request) )
             return "cadastro-perfil";
         session.setAttribute("doador", d);        
         return "redirect:cadastro-doador";
@@ -110,7 +110,9 @@ public class DoadorController {
     
     @RequestMapping("salvarAlteracoesPerfil")
     public String salvarAlteracoesPerfil(Model model, Doador d, HttpServletRequest request, HttpSession session) {
-        if (! validaDataNascimento(model, d, request) ) 
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
+
+        if (! validarDataNascimento(model, d, request) ) 
             return "user-info";
 
         Doador doador = (Doador) session.getAttribute("doadorInfo");
@@ -140,6 +142,7 @@ public class DoadorController {
     
     @RequestMapping("salvarAlteracoesDoador")
     public String salvarAlteracoesDoador(Model model, Doador d, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
         if (d.getMedicamentos().isEmpty())
             d.setMedicamentos("Não");
         if (d.getObservacoes().isEmpty())
@@ -160,7 +163,7 @@ public class DoadorController {
         return "user-info";
     }
     
-    private Boolean validaDataNascimento(Model model, Doador d, HttpServletRequest request) {
+    private Boolean validarDataNascimento(Model model, Doador d, HttpServletRequest request) {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         try {
             String dia = request.getParameter("dia");

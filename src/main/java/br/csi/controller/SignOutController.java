@@ -22,4 +22,5 @@ public class SignOutController {
         session.invalidate();
         return "index";
     }
+    
 }

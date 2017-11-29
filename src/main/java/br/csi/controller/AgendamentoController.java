@@ -67,7 +67,8 @@ public class AgendamentoController {
     }
     
     @RequestMapping("inserirAgendamento")
-    public String insereAgendamento(Model model, Agendamento a, HttpSession session, @RequestParam("id_hemocentro") Integer id_hemocentro, @RequestParam("data_agendamento") String dataAgendamento) {
+    public String inserirAgendamento(Model model, Agendamento a, HttpSession session, @RequestParam("id_hemocentro") Integer id_hemocentro, @RequestParam("data_agendamento") String dataAgendamento) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
         Usuario u = (Usuario) session.getAttribute("usuarioLogado");
         a.setDoador(new Doador(u.getId()));
         a.setHemocentro(new Hemocentro(id_hemocentro));
@@ -82,8 +83,37 @@ public class AgendamentoController {
         return "redirect:meus-agendamentos";
     }
     
+    @RequestMapping("buscarAgendamento")
+    public String buscarAgendamento(Model model, @RequestParam("id") Integer id_agendamento, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
+        try {
+            model.addAttribute("agendamentoUpdate", adao.buscarChavePrimaria(id_agendamento));
+        } catch (SQLException ex) {
+            Logger.getLogger(AgendamentoController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return "novo-agendamento";
+    }
+    
+    @RequestMapping("editarAgendamento")
+    public String editarAgendamento(Agendamento a, @RequestParam("id_hemocentro") Integer id_hemocentro, @RequestParam("data_agendamento") String dataAgendamento, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
+        Usuario u = (Usuario) session.getAttribute("usuarioLogado");
+        a.setDoador(new Doador(u.getId()));
+        a.setHemocentro(new Hemocentro(id_hemocentro));
+        a.setData(DateUtils.toDate(dataAgendamento, "dd/MM/yyyy"));
+        if (a.getObservacoes().isEmpty())
+            a.setObservacoes("N/A"); 
+        try {
+            adao.alterar(a);
+        } catch (SQLException ex) {
+            Logger.getLogger(AgendamentoController.class.getName()).log(Level.SEVERE, null, ex);
+        }       
+        return "redirect:meus-agendamentos";
+    }
+    
     @RequestMapping("deletarAgendamento")
-    public String removeAgendamento(@RequestParam("id_agendamento") Integer id_agendamento) {
+    public String removerAgendamento(@RequestParam("id_agendamento") Integer id_agendamento, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
         try {
             adao.excluir(new Agendamento(id_agendamento));
         } catch (SQLException ex) {

@@ -37,6 +37,7 @@ public class UsuarioController {
                  return "index";   
         }
         if ( !udao.autenticar(u) ) {
+            session.removeAttribute("usuarioLogado");
             model.addAttribute("msg", "{ 'id':'email-login', 'alerta':'Email ou senha inválidos.' }");        
             return "index";
         }
@@ -51,7 +52,7 @@ public class UsuarioController {
    
     @RequestMapping("cadastrarUsuario")
     public String novoUsuario(Model model, Usuario u, @RequestParam("confirmacao") String confirmacaoSenha, HttpSession session) {        
-        if (! validaInfoUsuario(u, model, confirmacaoSenha) )
+        if (! validarInfoUsuario(u, model, confirmacaoSenha) )
             return "index";
         try {
             Integer id = udao.inserir(u); 
@@ -66,7 +67,8 @@ public class UsuarioController {
     }
     
     @RequestMapping("editarUsuario")
-    public String editarUsuario(Model model) {
+    public String editarUsuario(Model model, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
         model.addAttribute("newTabActive", "conta");
         model.addAttribute("editarConta", true);
         return "user-info";
@@ -74,8 +76,9 @@ public class UsuarioController {
     
     @RequestMapping("salvarAlteracoesUser") 
     public String salvarAlteracoesUser(Model model, Usuario u, @RequestParam("confirmacao") String confirmacaoSenha, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
         model.addAttribute("newTabActive", "conta");
-        if (! validaInfoUsuario(u, model, confirmacaoSenha) ) {
+        if (! validarInfoUsuario(u, model, confirmacaoSenha) ) {
             model.addAttribute("editarConta", true);
             return "user-info";
         }
@@ -95,6 +98,7 @@ public class UsuarioController {
     
     @RequestMapping("deletarUsuario")
     public String deletarUsuario(Model model, @RequestParam("confirmacao-senha") String confirmacaoSenha, HttpSession session) {
+        if ( session.getAttribute("usuarioLogado") == null ) return "redirect:inicio";
         Usuario userLogado = (Usuario) session.getAttribute("usuarioLogado");
         if ( !userLogado.getSenha().equals(confirmacaoSenha) ) {
             model.addAttribute("msgErrorDelete", "Erro: Senha inválida.");
@@ -110,7 +114,7 @@ public class UsuarioController {
         return "redirect:sign-out";
     }
     
-    private Boolean validaInfoUsuario(Usuario u, Model model, String confirmacaoSenha) {
+    private Boolean validarInfoUsuario(Usuario u, Model model, String confirmacaoSenha) {
         if ( parametroVazio(u.getEmail(), model, "email", "Por favor, insira seu email.") ||
              parametroVazio(u.getSenha(), model, "email", "Por favor, insira sua senha.") ||
              parametroVazio(confirmacaoSenha, model, "email", "Por favor, confirme sua senha.") ) {
