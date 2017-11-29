@@ -70,7 +70,7 @@
     <div class="container">
     <div class="row">
     <div class="col-md-8 col-md-offset-2">
-        <h4 class="text-center">Veja os hemocentros que precisam do seu tipo sanguíneo com urgência!</h4>
+        <h4 class="text-center">Veja os hemocentros que precisam de seu tipo sanguíneo com urgência!</h4>
         <div id="alertas-secao">
             <c:forEach var="a" items="${alertasAtivosUser}">
                 <div class ="bloco-alerta">
@@ -86,6 +86,15 @@
                     </div> 
                 </div>                
             </c:forEach>
+            <c:if test="${empty alertasAtivosUser}">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <div class="alert alert-warning">
+                            <h5 class="text-center"><i class="fa fa-exclamation-circle" aria-hidden="true"></i> Não há alertas de urgência para seu tipo sanguíneo.</h5>
+                        </div>
+                    </div>
+                </div>
+            </c:if>
         </div>
     </div>
     </div><hr/>

@@ -17,7 +17,6 @@
             body {
                 background: #BF2025;
                 background: linear-gradient(to left, rgba(255,0,0,0), #BF2025);
-                background-image: url("img/gotas-fundo.png"), linear-gradient(to left, rgba(255,0,0,0), #BF2025);
                 background-repeat: repeat;
                 background-attachment: fixed;
             }
@@ -54,23 +53,20 @@
                 <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3 col-lg-4 col-lg-offset-4">
                     
                     <div class="form-login">
-                        <img src="img/logo.png" alt="doa mais" class="center-block img-responsive logo-form" height="50%" width="50%"/>
-               
-                        <form action="usuarioServlet" method="post">
+                        <img src="img/logo.png" alt="doa mais" class="center-block img-responsive logo-form" height="50%" width="50%"/>               
+                        <c:if test="${not empty msg}">
+                            <div class="alert alert-danger alert-dismissible fade in" style="margin: 8px auto;">  
+                                <button class="close" data-dismiss="alert">&times;</button>
+                                <p class="text-center">${msg}</p>
+                            </div> 
+                            <c:remove var="msg"/> 
+                        </c:if>
+                        <form action="admin-login" method="post">
                             <t:campo-form type="text" id="login" label="Login" placeholder="Digite o login" />
                             <t:campo-form type="password" id="senha" label="Senha" placeholder="Digite a senha" />
                             <button type="submit" class="btn btn-default btn-submit">Fazer login</button>
                         </form>               
-                    </div>
-
-                    <c:if test="${not empty msg}">
-                        <div class="alert alert-danger alert-dismissible fade in">  
-                            <button class="close" data-dismiss="alert">&times;</button>
-                            <p>${msg}</p>
-                        </div> 
-                        <c:remove var="msg"/> <!-- 'lt'% session.removeAttribute("msg"); %'gt' -->
-                    </c:if>
-                    
+                    </div>     
                 </div> <!-- col -->
             </div> <!-- ./row -->
         </div> <!-- ./container -->

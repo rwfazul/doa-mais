@@ -67,8 +67,13 @@ main h1 a {
 }
 
 .tab-content table .fa {
-    color: #BF2025;
     margin-right: 5px;
+    font-size: 18px;
+}
+
+.tab-content table .fa-trash,
+.tab-content table thead .fa {
+    color: #BF2025;
 }
 
 .tab-content table .fa:hover {

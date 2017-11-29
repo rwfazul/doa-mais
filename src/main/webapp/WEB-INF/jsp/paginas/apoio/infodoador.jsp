@@ -4,13 +4,12 @@
     Author     : rhau
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t" %>  
 
-<h4><small>InformaÃ§Ãµes bÃ¡sicas > Doador</small></h4>
+<h4><small>Informações básicas > Doador</small></h4>
 <hr>
 
-<t:campo-editar label="Tipo sanguÃ­neo" valor="${doadorInfo.tipoSanguineo}" target="editarDoador"></t:campo-editar>
+<t:campo-editar label="Tipo sanguíneo" valor="${doadorInfo.tipoSanguineo}" target="editarDoador"></t:campo-editar>
 <t:campo-editar label="Peso" valor="${doadorInfo.peso}kg" target="editarDoador"></t:campo-editar>
-<t:campo-editar label="VocÃª toma algum remÃ©dio controlado?" valor="${doadorInfo.medicamentos}" target="editarDoador"></t:campo-editar>
-<t:campo-editar label="ObservaÃ§Ãµes pessoais" valor="${doadorInfo.observacoes}" target="editarDoador"></t:campo-editar>
+<t:campo-editar label="Você toma algum remédio controlado?" valor="${doadorInfo.medicamentos}" target="editarDoador"></t:campo-editar>
+<t:campo-editar label="Observações pessoais" valor="${doadorInfo.observacoes}" target="editarDoador"></t:campo-editar>

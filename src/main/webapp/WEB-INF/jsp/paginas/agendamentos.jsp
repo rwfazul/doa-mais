@@ -8,6 +8,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@taglib tagdir="/WEB-INF/tags" prefix="t" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -108,7 +109,17 @@
                                 <td><fmt:formatDate pattern="dd/MM/yyyy" value="${a.data}" /></td>
                                 <td>${a.faixaHorario}</td>
                                 <td>${a.observacoes}</td>
-                                <td><a class="modal-confirmacao" data-toggle="modal" data-target="#confirmacao" data-id="${a.id}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${a.evento == null}">
+                                            <a href="buscarAgendamento?id=${a.id}"><i class="fa fa-refresh" aria-hidden="true"></i></a>                                      
+                                        </c:when>
+                                        <c:otherwise>
+                                            <i class="fa fa-refresh" aria-hidden="true" title="Esse agendamento faz parte de um evento" style="color: #AAA;"></i>                                                   
+                                        </c:otherwise>
+                                    </c:choose>
+                                    <a class="modal-confirmacao" data-toggle="modal" data-target="#confirmacao" data-id="${a.id}"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                                </td>
                             </tr>
                         </c:forEach>                       
                     </tbody>

@@ -80,7 +80,7 @@
                     eventos</span> de doação de sangue de sua região. 
                     <span class="descricao-destaque" style="white-space:nowrap;">Doa+ :)</span>
                 </p>
-                <a href="" class="btn btn-hemocentro">Painel do hemocentro <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                <a href="dm-admin" class="btn btn-hemocentro">Painel do hemocentro <i class="fa fa-sign-in" aria-hidden="true"></i></a>
             </div>
             <div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-5 col-md-offset-0 col-lg-4 col-lg-offset-1">
                 <div class="form-login">
