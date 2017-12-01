@@ -13,7 +13,7 @@ Em complemento, pensando em eventos de doações de sangue que ocorrem nas local
 - Executar script para criação do banco de dados no PostgreSQL (br/csi/banco/sql/doaMais_ddl.sql) e, se desejável iniciar com alguns registros pré-inseridos, executar o script doaMais_dml.sql;
 - A classe BD.java dentro do pacote ‘banco' devem ser modificada de acordo com a configuração da base de dados (user e password);
 - A inserção e o gerenciamento de hemocentros é uma funcionalidade que está disponível apenas aos administradores do sistema. O painel administrativo pode ser encontrado em doaMais/dm-admin. Se executado o script de inserção dos dados (doaMais_dml.sql), o usuário administrador default possuirá login: admin e password: admin.
-- As dependências são gerenciadas pelo Maven, logo não é preciso adicionar nenhum .JAR na build path do projeto;
+- As dependências são gerenciadas pelo Maven, logo não é preciso adicionar nenhum .JAR na build path do projeto.
 
 ------------------------------------------------------------------
 
